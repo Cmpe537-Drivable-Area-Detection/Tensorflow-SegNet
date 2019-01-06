@@ -84,9 +84,9 @@ def CamVid_reader(filename_queue):
     image_bytes = tf.image.decode_jpeg(imageValue)
     label_bytes = tf.image.decode_png(labelValue)
 
-    image = tf.image.resize_images(image_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_DEPTH))
+    image = tf.image.resize_images(image_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
     image = tf.reshape(image, (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_DEPTH))
-    label = tf.image.resize_images(label_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_DEPTH))
+    label = tf.image.resize_images(label_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
     label = tf.reshape(label, (IMAGE_HEIGHT, IMAGE_WIDTH, 1))
 
     return image, label

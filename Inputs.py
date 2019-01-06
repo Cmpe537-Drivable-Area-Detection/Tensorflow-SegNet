@@ -92,15 +92,15 @@ def CamVid_reader(filename_queue):
     return image, label
 
 
-def get_filename_list(path):
+def get_filename_list(path, prefix="/content/drive/My Drive/"):
     fd = open(path)
     image_filenames = []
     label_filenames = []
     filenames = []
     for i in fd:
         i = i.strip().split(" ")
-        image_filenames.append(i[0])
-        label_filenames.append(i[1])
+        image_filenames.append(f"{prefix}{i[0]}")
+        label_filenames.append(f"{prefix}{i[1]}")
     return image_filenames, label_filenames
 
 

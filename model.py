@@ -299,7 +299,7 @@ def test(FLAGS):
         tf.float32,
         shape=[batch_size, image_h, image_w, image_c])
 
-    test_labels_node = tf.placeholder(tf.int64, shape=[batch_size, 360, 480, 1])
+    test_labels_node = tf.placeholder(tf.int64, shape=[batch_size, image_h, image_w, 1])
 
     phase_train = tf.placeholder(tf.bool, name='phase_train')
 
@@ -326,8 +326,8 @@ def test(FLAGS):
         for image_batch, label_batch in zip(images, labels):
 
             feed_dict = {
-                test_data_node: image_batch,
-                test_labels_node: label_batch,
+                test_data_node: image_batch.eval(),
+                test_labels_node: label_batch.eval(),
                 phase_train: False
             }
 

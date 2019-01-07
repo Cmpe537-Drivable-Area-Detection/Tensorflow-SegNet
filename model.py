@@ -299,7 +299,7 @@ def test(FLAGS):
         tf.float32,
         shape=[batch_size, image_h, image_w, image_c])
 
-    test_labels_node = tf.placeholder(tf.int64, shape=[batch_size, 360, 480, 1])
+    test_labels_node = tf.placeholder(tf.int64, shape=[batch_size, 360, 480, 3])
 
     phase_train = tf.placeholder(tf.bool, name='phase_train')
 

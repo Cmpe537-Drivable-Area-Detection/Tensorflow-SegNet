@@ -291,6 +291,7 @@ def test(FLAGS):
     image_c = FLAGS.image_c
     # testing should set BATCH_SIZE = 1
     batch_size = 1
+    count = 0
 
     image_filenames, label_filenames = get_filename_list(test_dir)
 
@@ -333,11 +334,11 @@ def test(FLAGS):
             dense_prediction, im = sess.run([logits, pred], feed_dict=feed_dict)
             # output_image to verify
             if (FLAGS.save_image):
-                writeImage(im[0], 'testing_image.png')
-                # writeImage(im[0], 'out_image/'+str(image_filenames[count]).split('/')[-1])
+                # writeImage(im[0], 'testing_image.png')
+                writeImage(im[0], 'out_image/'+str(image_filenames[count]).split('/')[-1])
 
             hist += get_hist(dense_prediction, label_batch)
-            # count+=1
+            count+=1
         acc_total = np.diag(hist).sum() / hist.sum()
         iu = np.diag(hist) / (hist.sum(1) + hist.sum(0) - np.diag(hist))
         print("acc: ", acc_total)

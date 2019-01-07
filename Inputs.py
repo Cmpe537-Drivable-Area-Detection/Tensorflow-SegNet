@@ -138,7 +138,8 @@ def get_all_test_data(im_list, la_list):
         im = resize(im/255.0, (360, 480))
         im = im[np.newaxis]
         la = skimage.io.imread(la_filename)
-        la = resize(la, (360, 480))
+        print(la)
+        la = resize(la, (360, 480, 1))
         la = la[np.newaxis]
         la = la[..., np.newaxis]
         images.append(im)

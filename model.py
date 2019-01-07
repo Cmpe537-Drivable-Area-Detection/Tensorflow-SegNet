@@ -337,7 +337,7 @@ def test(FLAGS):
                 # writeImage(im[0], 'testing_image.png')
                 writeImage(im[0], 'out_image/'+str(image_filenames[count]).split('/')[-1])
 
-            hist += get_hist(dense_prediction, label_batch)
+            hist += get_hist(dense_prediction, label_batch.eval())
             count+=1
         acc_total = np.diag(hist).sum() / hist.sum()
         iu = np.diag(hist) / (hist.sum(1) + hist.sum(0) - np.diag(hist))

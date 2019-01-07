@@ -130,18 +130,30 @@ def get_all_test_data(im_list, la_list):
     images = []
     labels = []
     index = 0
-    for im_filename, la_filename in zip(im_list, la_list):
-        print(im_filename)
-        print(la_filename)
-        im = np.array(skimage.io.imread(im_filename), np.float32)
-        print(im)
-        im = resize(im/255.0, (360, 480))
-        im = im[np.newaxis]
-        la = skimage.io.imread(la_filename)
-        print(la)
-        la = resize(la, (360, 480, 1))
-        la = la[np.newaxis]
-        la = la[..., np.newaxis]
-        images.append(im)
-        labels.append(la)
+    for im, la in zip(im_list, la_list):
+        imageValue = tf.read_file(im)
+        labelValue = tf.read_file(la)
+
+        image_bytes = tf.image.decode_jpeg(imageValue)
+        label_bytes = tf.image.decode_png(labelValue)
+
+        image = tf.image.resize_images(image_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
+        image = tf.reshape(image, (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_DEPTH))
+        label = tf.image.resize_images(label_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
+        label = tf.reshape(label, (IMAGE_HEIGHT, IMAGE_WIDTH, 1))
+        images.append(image)
+        labels.append(label)
+        # print(im_filename)
+        # print(la_filename)
+        # im = np.array(skimage.io.imread(im_filename), np.float32)
+        # print(im)
+        # im = resize(im/255.0, (360, 480))
+        # im = im[np.newaxis]
+        # la = skimage.io.imread(la_filename)
+        # print(la)
+        # la = resize(la, (360, 480))
+        # la = la[np.newaxis]
+        # la = la[..., np.newaxis]
+        # images.append(im)
+        # labels.append(la)
     return images, labels

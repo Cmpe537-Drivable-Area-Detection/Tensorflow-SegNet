@@ -132,12 +132,12 @@ def get_all_test_data(im_list, la_list):
     index = 0
     for im_filename, la_filename in zip(im_list, la_list):
         im = np.array(skimage.io.imread(im_filename), np.float32)
-        im = im[np.newaxis]
         im = resize(im, (360, 480))
+        im = im[np.newaxis]
         la = skimage.io.imread(la_filename)
+        la = resize(la, (360, 480))
         la = la[np.newaxis]
         la = la[..., np.newaxis]
-        la = resize(la, (360, 480))
         images.append(im)
         labels.append(la)
     return images, labels

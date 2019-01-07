@@ -335,7 +335,7 @@ def test(FLAGS):
             # output_image to verify
             if (FLAGS.save_image):
                 # writeImage(im[0], 'testing_image.png')
-                writeImage(im[0], 'out_image/'+str(image_filenames[count]).split('/')[-1])
+                writeImage(im[0], '/content/drive/My Drive/logs/segnet_logs/out_image/'+str(image_filenames[count]).split('/')[-1])
 
             hist += get_hist(dense_prediction, label_batch.eval())
             count+=1

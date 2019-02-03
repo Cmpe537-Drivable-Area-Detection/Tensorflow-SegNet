@@ -323,6 +323,8 @@ def test(FLAGS):
 
         threads = tf.train.start_queue_runners(sess=sess)
         hist = np.zeros((NUM_CLASSES, NUM_CLASSES))
+
+        t = time.time()
         for image_batch, label_batch in zip(images, labels):
 
             feed_dict = {
@@ -333,6 +335,8 @@ def test(FLAGS):
 
             dense_prediction, im = sess.run([logits, pred], feed_dict=feed_dict)
             # output_image to verify
+            print(f"Elapsed Time:{time.time() - t}")
+            t = time.time()
             if (FLAGS.save_image):
                 # writeImage(im[0], 'testing_image.png')
                 writeImage(im[0], '/content/drive/My Drive/segnet_output/'+str(image_filenames[count]).split('/')[-1])

@@ -1,1 +1,2 @@
-IMG-20190203-WA0009.jpg custom_color_labels/val/c682e776-d20a6f25_drivable_id.png
+1.png custom_color_labels/val/c682e776-d20a6f25_drivable_id.png
+2.png custom_color_labels/val/c682e776-d20a6f25_drivable_id.png

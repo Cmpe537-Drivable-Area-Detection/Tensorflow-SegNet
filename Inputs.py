@@ -139,7 +139,7 @@ def get_all_test_data(im_list, la_list):
 
         image = tf.image.resize_images(image_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
         image = tf.reshape(image, (1, IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_DEPTH))
-        label = tf.image.resize_images(label_bytes, (IMAGE_HEIGHT, 1))
+        label = tf.image.resize_images(label_bytes, (IMAGE_HEIGHT, IMAGE_WIDTH))
         label = tf.reshape(label, (1, IMAGE_HEIGHT, IMAGE_WIDTH, 1))
         images.append(image)
         labels.append(label)

@@ -8,8 +8,8 @@ import skimage
 import skimage.io
 from skimage.transform import resize
 
-IMAGE_HEIGHT = 360
-IMAGE_WIDTH = 480
+IMAGE_HEIGHT = 800
+IMAGE_WIDTH = 800
 IMAGE_DEPTH = 3
 
 NUM_CLASSES = 3
